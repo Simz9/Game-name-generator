@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Game Name Generator</title>
+<style>
+  body { font-family: Arial; text-align: center; margin: 50px; }
+  #name { font-size: 30px; margin: 20px; color: #2c3e50; }
+  button { padding: 10px 20px; font-size: 20px; cursor: pointer; margin-bottom: 30px; }
+  .ad { width: 100%; height: 90px; background: #f0f0f0; margin: 10px 0; line-height: 90px; color: #555; }
+  #adblock-message { color: red; font-size: 18px; display: none; }
+</style>
+</head>
+<body>
+
+<div id="adblock-message">يرجى إيقاف مانع الإعلانات لمشاهدة الصفحة</div>
+
+<div class="ad" id="ad1">Ad Space 1</div>
+<h1>Game Name Generator</h1>
+<div class="ad" id="ad2">Ad Space 2</div>
+
+<div id="name">Press the button to generate a name</div>
+<button onclick="generateName()">Generate Name</button>
+
+<div class="ad" id="ad3">Ad Space 3</div>
+<div class="ad" id="ad4">Ad Space 4</div>
+
+<script>
+const names = [
+"DemonSlayer","ShadowKing","FireLord","IceMage","DarkHunter",
+"StormRider","NightWolf","BladeMaster","GhostSniper","ThunderFist",
+"DragonKnight","VenomAssassin","LightningBolt","WarriorX","FrostGiant",
+"NightStalker","ShadowBlade","IronFist","PhantomRider","BloodHunter",
+"CyberNinja","RogueAgent","FireWizard","IceQueen","DarkSorcerer",
+"SteelTitan","ThunderLord","ShadowHunter","BladeStorm","GhostWarrior",
+"NightBlade","DragonMaster","VenomLord","LightningKing","WarLord",
+"FrostMage","ShadowKnight","IronWarrior","PhantomAssassin","BloodKnight",
+"CyberWarrior","RogueKnight","FireLordX","IceSorcerer","DarkAssassin",
+"SteelKnight","ThunderKnight","ShadowMage","BladeMasterX","GhostSlayer",
+"NightKing","DragonSlayer","VenomHunter","LightningMaster","WarriorLord",
+"FrostLord","ShadowAssassin","IronKnightX","PhantomKnight","BloodLord",
+"CyberKnight","RogueMaster","FireHunter","IceLord","DarkKnightX",
+"SteelAssassin","ThunderSlayer","ShadowLord","BladeHunter","GhostKnight",
+"NightHunter","DragonLord","VenomSlayer","LightningHunter","WarriorMaster",
+"FrostHunter","ShadowMaster","IronLord","PhantomMaster","BloodHunterX",
+"CyberSlayer","RogueHunter","FireKnight","IceHunter","DarkLord",
+"SteelHunter","ThunderMaster","ShadowSlayer","BladeLord","GhostMaster",
+"NightSlayer","DragonHunter","VenomMaster","LightningSlayer","WarriorHunter",
+"FrostSlayer","ShadowHunterX","IronMaster","PhantomSlayer","BloodMaster",
+"CyberHunter","RogueSlayer","FireMaster","IceSlayer","DarkMaster",
+"SteelSlayer","ThunderHunter","ShadowMasterX","BladeSlayer","GhostHunter",
+"NightMaster","DragonMasterX","VenomSlayerX","LightningMasterX","WarriorSlayer",
+"FrostMaster","ShadowSlayerX","IronSlayer","PhantomHunter","BloodSlayer",
+"CyberMaster","RogueMasterX","FireSlayer","IceMaster","DarkSlayer",
+"SteelMaster","ThunderSlayer","ShadowHunterXX","BladeMasterXX","GhostSlayerX",
+"NightHunterX","DragonSlayerX","VenomMasterX","LightningSlayerX","WarriorMasterX",
+"FrostSlayerX","ShadowMasterXX","IronHunterX","PhantomSlayerX","BloodMasterX",
+"CyberSlayerX","RogueSlayerX","FireHunterX","IceSlayerX","DarkMasterX",
+"SteelSlayerX","ThunderHunterX","ShadowSlayerXXX","BladeHunterX","GhostMasterX",
+"NightSlayerX","DragonHunterX","VenomSlayerXX","LightningMasterXX","WarriorSlayerX",
+"FrostMasterX","ShadowHunterXXX","IronSlayerX","PhantomMasterX","BloodSlayerX",
+"CyberHunterX","RogueMasterXX","FireSlayerX","IceMasterX","DarkSlayerX",
+"SteelMasterX","ThunderSlayerX","ShadowSlayerXXXX","BladeMasterXXX","GhostHunterX",
+"NightMasterX","DragonSlayerXX","VenomMasterXX","LightningSlayerXX","WarriorMasterXX",
+"FrostSlayerXX","ShadowMasterXXX","IronHunterXX","PhantomSlayerXX","BloodMasterXX",
+"CyberSlayerXX","RogueSlayerXX","FireHunterXX","IceSlayerXX","DarkMasterXX",
+"SteelSlayerXX","ThunderHunterXX","ShadowHunterXXXX","BladeHunterXX","GhostMasterXX",
+"NightSlayerXX","DragonHunterXX","VenomSlayerXXX","LightningMasterXXX","WarriorSlayerXX",
+"FrostMasterXX","ShadowHunterXXXXX","IronSlayerXX","PhantomMasterXX","BloodSlayerXX",
+"CyberHunterXX","RogueMasterXXX","FireSlayerXX","IceMasterXX","DarkSlayerXX",
+"SteelMasterXX","ThunderSlayerXX","ShadowSlayerXXXXX","BladeMasterXXXX","GhostHunterXX",
+"NightMasterXX","DragonSlayerXXX","VenomMasterXXX","LightningSlayerXXX","WarriorMasterXXX"
+];
+
+function generateName() {
+  const randomIndex = Math.floor(Math.random() * names.length);
+  document.getElementById("name").innerText = names[randomIndex];
+}
+
+// كشف مانع الإعلانات
+window.onload = function() {
+  const adTest = document.createElement('div');
+  adTest.className = 'ad';
+  adTest.style.display = 'none';
+  document.body.appendChild(adTest);
+  setTimeout(() => {
+    if (adTest.offsetHeight === 0) {
+      document.getElementById('adblock-message').style.display = 'block';
+    }
+    document.body.removeChild(adTest);
+  }, 100);
+};
+</script>
+
+</body>
+</html>
