@@ -2,26 +2,90 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Game Name Generator</title>
 <style>
-  body { font-family: Arial; text-align: center; margin: 50px; }
-  #name { font-size: 30px; margin: 20px; color: #2c3e50; }
-  button { padding: 10px 20px; font-size: 20px; cursor: pointer; margin-bottom: 30px; }
-  .ad { width: 100%; height: 90px; background: #f0f0f0; margin: 10px 0; line-height: 90px; color: #555; }
-  #adblock-message { color: red; font-size: 18px; display: none; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  header {
+    padding: 30px 10px;
+    background: rgba(0,0,0,0.3);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  }
+  h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+  #name {
+    margin: 40px 0;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffd700;
+    word-wrap: break-word;
+  }
+  button {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 10px;
+    background: #ff4b2b;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  }
+  button:hover {
+    background: #ff416c;
+  }
+  .ad {
+    width: 100%;
+    max-width: 320px;
+    height: 100px;
+    margin: 15px auto;
+    background: #e0e0e0;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+  #adblock-message {
+    display: none;
+    background: #ff4444;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+  @media(max-width: 600px){
+    h1 { font-size: 2rem; }
+    #name { font-size: 1.5rem; }
+    button { font-size: 1.2rem; padding: 12px 20px; }
+    .ad { height: 80px; }
+  }
 </style>
 </head>
 <body>
 
-<div id="adblock-message">يرجى إيقاف مانع الإعلانات لمشاهدة الصفحة</div>
+<header>
+  <h1>🎮 Game Name Generator 🎮</h1>
+</header>
+
+<div id="adblock-message">⚠️ يرجى إيقاف مانع الإعلانات لمشاهدة المحتوى والإعلانات.</div>
 
 <div class="ad" id="ad1">Ad Space 1</div>
-<h1>Game Name Generator</h1>
-<div class="ad" id="ad2">Ad Space 2</div>
 
-<div id="name">Press the button to generate a name</div>
+<div id="name">اضغط الزر لتوليد اسم جديد</div>
 <button onclick="generateName()">Generate Name</button>
 
+<div class="ad" id="ad2">Ad Space 2</div>
 <div class="ad" id="ad3">Ad Space 3</div>
 <div class="ad" id="ad4">Ad Space 4</div>
 
@@ -52,15 +116,11 @@ const names = [
 "NightMaster","DragonMasterX","VenomSlayerX","LightningMasterX","WarriorSlayer",
 "FrostMaster","ShadowSlayerX","IronSlayer","PhantomHunter","BloodSlayer",
 "CyberMaster","RogueMasterX","FireSlayer","IceMaster","DarkSlayer",
-"SteelMaster","ThunderSlayer","ShadowHunterXX","BladeMasterXX","GhostSlayerX",
+"SteelMaster","ThunderSlayer","ShadowSlayerXXX","BladeMasterXX","GhostSlayerX",
 "NightHunterX","DragonSlayerX","VenomMasterX","LightningSlayerX","WarriorMasterX",
 "FrostSlayerX","ShadowMasterXX","IronHunterX","PhantomSlayerX","BloodMasterX",
 "CyberSlayerX","RogueSlayerX","FireHunterX","IceSlayerX","DarkMasterX",
-"SteelSlayerX","ThunderHunterX","ShadowSlayerXXX","BladeHunterX","GhostMasterX",
-"NightSlayerX","DragonHunterX","VenomSlayerXX","LightningMasterXX","WarriorSlayerX",
-"FrostMasterX","ShadowHunterXXX","IronSlayerX","PhantomMasterX","BloodSlayerX",
-"CyberHunterX","RogueMasterXX","FireSlayerX","IceMasterX","DarkSlayerX",
-"SteelMasterX","ThunderSlayerX","ShadowSlayerXXXX","BladeMasterXXX","GhostHunterX",
+"SteelSlayerX","ThunderHunterX","ShadowSlayerXXXX","BladeMasterXXX","GhostHunterX",
 "NightMasterX","DragonSlayerXX","VenomMasterXX","LightningSlayerXX","WarriorMasterXX",
 "FrostSlayerXX","ShadowMasterXXX","IronHunterXX","PhantomSlayerXX","BloodMasterXX",
 "CyberSlayerXX","RogueSlayerXX","FireHunterXX","IceSlayerXX","DarkMasterXX",
@@ -77,19 +137,24 @@ function generateName() {
   document.getElementById("name").innerText = names[randomIndex];
 }
 
-// كشف مانع الإعلانات
-window.onload = function() {
-  const adTest = document.createElement('div');
-  adTest.className = 'ad';
-  adTest.style.display = 'none';
-  document.body.appendChild(adTest);
-  setTimeout(() => {
-    if (adTest.offsetHeight === 0) {
+// كشف مانع الإعلانات حديث
+function detectAdBlock() {
+  let ad = document.createElement('div');
+  ad.className = 'ad adsbox';
+  ad.style.display = 'block';
+  ad.style.position = 'absolute';
+  ad.style.height = '1px';
+  ad.style.width = '1px';
+  document.body.appendChild(ad);
+  window.setTimeout(function() {
+    if (ad.offsetHeight === 0) {
       document.getElementById('adblock-message').style.display = 'block';
     }
-    document.body.removeChild(adTest);
+    ad.remove();
   }, 100);
-};
+}
+
+window.onload = detectAdBlock;
 </script>
 
 </body>
